@@ -3,3 +3,9 @@
 
 By Justen Yeung
 */
+#include "solve.h"
+
+int main (intargc, char** argv){
+
+  return 0;
+}
