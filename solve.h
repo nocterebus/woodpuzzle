@@ -22,48 +22,85 @@ public:
   std::string name;
   int size;
   //hard set block locations kept in case of need of reset
+  //starting from block 0 at [1,0,0,0,1,0,0,0,1] orientation
   std::vector<std::vector<int>> Shape;
   //next block location relative to current (zyx)(up away right) alterable
   std::vector<std::vector<int>> shape;
-  //orientation in space (6 axis, 24 possible orientations)(a b c, d e f, g h i)
-  std::vector<int> orientation = {1,0,0,0,1,0,0,0,1};
-  //block selected as center of piece to rotate around and place
+  //orientation in space (zyx, 24 possible orientations)(a b c, d e f, g h i)
+  std::vector<int> orient_now = {1,0,0,0,1,0,0,0,1};
+  //right hand rule rotations around stated axis (counter clockwise 90degrees)
+  std::vector<int> reorient_z = {1,0,0,0,0,-1,0,1,0};
+  std::vector<int> reorient_y = {0,0,1,0,1,0,-1,0,0};
+  std::vector<int> reorient_x = {0,-1,0,1,0,0,0,0,1};
+  int z_rotations = 0;
+  int y_rotations = 0;
+  int x_rotations = 0;
+  //block selected as center of piece to rotate around and place...will be initially as 0 to start, later implement random center
   int center = 0;
-
-  void reorient(std::vector<int>);
+  //amount of times center of piece has been changed
+  int recenters = 0;
+  //reset stats on piece if all placement combinations tested on current placement block
+  void reset();
+  //change the block of piece designated as center of piece
   void recenter();
+  //rotate piece along an axis to a rotation that has not been checked yet
+  void reorient();
 };
-
-void piece::reorient(std::vector<int> axis){
-  //ensure input is correct
-  if (axis.size() != 9){
-    std::cout<<"Unable to reorient with given orientation \n";
-    return;
+//reset stats on piece if all placement combinations tested on current placement block
+void piece::reset(){
+  shape = Shape;
+  z_rotations, y_rotations, x_rotations, center, recenters = 0;
+  orient_now = {1,0,0,0,1,0,0,0,1};
+}
+//change the block of piece designated as center of piece
+void piece::recenter(){
+  ++center;
+  if (center >= size){
+    center = 0;
   }
-  //ensure size of piece is correct
-  if(size == 4 or size == 3){
-    shape = Shape;
-    int c = center;
-    //iterate through piece blocks starting from current center
-    for (int i = 0; i < size; ++ i){
-      if (c >= size){
-        c = 0;
-      }
-      //change next block location depending on axis orientation
-      for (int i = 0; i < 3; ++ i){
-        //shape[c] =
-      }
-      ++ c;
-    }
-  }
-  else{
-    std::cout<<"Attempted to reorient a piece that was not of size 4 or 3 \n";
-    return;
+  if (recenters >= size){
+    std::cout<<"piece does not fit here. moving to another spot\n";
+    //reset stats on piece
+    piece.reset();
   }
 }
+//rotate piece along an axis to a rotation that has not been checked yet
+void piece::reorient(){
+  //make rotation depending on number of tested rotations
+  //if z rotated 4 times then piece will not fit in this spot and has made all possible rotations
+  if (z_rotations >= size){
+    //back at original orientation along z axis
+    std::cout<<piece.name<<" doesn't fit. changing center.\n";
+    piece.recenter();
+    return;
+  }
+  //if back at original orientation along y axis, rotate once along z axis
+  if (y_rotations >= size){
+    //back at original orientation along y axis. can reset Y_rotations count to 0
+    y_rotations = 0;
+    //rotate along z_axis
+    for (int nblock = 0; nblock < piece.size; ++b){
+      shape[nblock] = {((shape[nblock][0])+(shape[nblock][1])+(shape[nblock][2]),(),())}
+    }
+    //increase z_rotations count by 1
+    ++z_rotations;
+  }
+  //if back at original orientation along x axis, rotate along z axis once
+  if (x_rotations >= size){
+    //back at original orientation along x axis. can reset x_rotations count to 0
+    x_rotations = 0;
+    //rotate along y_axis
 
-void piece::recenter(){
+    //increase y_rotations count by 1
+    ++y_rotations;
+  }
+  //else rotate piece along x_axis
+  else {
+    //rotate along x_axis
 
+    //increase x_rotations count by 1
+    ++x_rotations;
+  }
 }
 
 //specific classes
@@ -75,12 +112,22 @@ public:
     size = 4;
     //hard set block locations kept in case of need of reset
     Shape = {{0,1,0},{1,0,0},{1,0,0},{-2,-1,0}};
-    //starting from block 0 at [1,1,1] orientation
+    //starting from block 0 at [1,0,0,0,1,0,0,0,1] orientation
     shape = {{0,1,0},{1,0,0},{1,0,0},{-2,-1,0}};
   };
 };
 
 #endif
+
+
+
+
+
+
+
+
+
+
 /*
 A solution (or the solution)
 layer bottom
