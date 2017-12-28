@@ -81,3 +81,20 @@ public:
 };
 
 #endif
+/*
+A solution (or the solution)
+layer bottom
+LSS
+LPV
+LLV
+layer mid
+SSQ
+TPV
+PPC
+layer top
+TQQ
+TQC
+TCC
+
+
+*/
