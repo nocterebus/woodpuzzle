@@ -29,9 +29,9 @@ public:
   //orientation in space (xyz, 24 possible orientations)(a b c, d e f, g h i)
   std::vector<int> orient_now = {1,0,0,0,1,0,0,0,1};
   //right hand rule rotations around stated axis (counter clockwise 90degrees)
-  std::vector<int> reorient_x = {1,0,0,0,0,-1,0,1,0};
-  std::vector<int> reorient_y = {0,0,1,0,1,0,-1,0,0};
-  std::vector<int> reorient_z = {0,-1,0,1,0,0,0,0,1};
+  //std::vector<int> reorient_x = {1,0,0,0,0,-1,0,1,0};
+  //std::vector<int> reorient_y = {0,0,1,0,1,0,-1,0,0};
+  //std::vector<int> reorient_z = {0,-1,0,1,0,0,0,0,1};
   int x_rotations = 0;
   int y_rotations = 0;
   int z_rotations = 0;
@@ -127,6 +127,32 @@ public:
   };
 };
 
+std::vector<std::vector<std::vector<std::string>>> Solve(std::vector<std::vector<std::vector<std::string>>> filling, std::vector<piece> filler, std::vector<int> checked){
+
+  //return Solve(filling, filler,checked);
+  return filling;
+}
+
+void pout(std::vector<std::vector<std::vector<std::string>>> input){
+ for (int z = 2; z >=0; --z){
+   if (z == 0){
+     std::cout<<"bottom layer\n";
+   }
+   else if (z == 1){
+     std::cout<<"middle layer\n";
+   }
+   else if (z ==2){
+     std::cout<<"top layer\n";
+   }
+   for (int y = 2; y >= 0; --y){
+     for (int x = 0; x < 3; ++x){
+       std::cout<<input[z][y][x];
+     }
+     std::cout<<"\n";
+   }
+   std::cout<<"\n";
+ }
+}
 #endif
 
 
