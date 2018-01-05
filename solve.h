@@ -198,6 +198,7 @@ public:
     shape = {{0,1,0},{0,0,1},{0,-1,-1}};
   }
 };
+
 std::vector<std::vector<std::vector<std::string>>> Solve(std::vector<std::vector<std::vector<std::string>>> filling, std::vector<piece> filler, std::vector<int> checked){
 
   //return Solve(filling, filler,checked);
