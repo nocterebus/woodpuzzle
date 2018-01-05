@@ -126,7 +126,78 @@ public:
     shape = {{0,1,0},{0,0,1},{0,0,1},{0,-1,-2}};
   };
 };
-
+class Tshape : public piece{
+public:
+  //null constructor
+  Tshape(){
+    name = "T";
+    size = 4;
+    //hard set block next locations kept in case of need of reset{dx, dy, dz}
+    Shape = {{0,1,0},{0,1,0},{0,-1,1},{0,-1,-1}};
+    //starting from block 0 at [1,0,0,0,1,0,0,0,1] orientation
+    shape = {{0,1,0},{0,1,0},{0,-1,1},{0,-1,-1}};
+  }
+};
+class Sshape : public piece{
+public:
+  //null constructor
+  Sshape(){
+    name = "S";
+    size = 4;
+    //hard set block next locations kept in case of need of reset{dx, dy, dz}
+    Shape = {{0,1,0},{0,0,1},{0,1,0},{0,-2,-1}};
+    //starting from block 0 at [1,0,0,0,1,0,0,0,1] orientation
+    shape = {{0,1,0},{0,0,1},{0,1,0},{0,-2,-1}};
+  }
+};
+class Pshape : public piece{
+public:
+  //null constructor
+  Pshape(){
+    name = "P";
+    size = 4;
+    //hard set block next locations kept in case of need of reset{dx, dy, dz}
+    Shape = {{0,1,0},{0,0,1},{1,0,0},{-1,-1,-1}};
+    //starting from block 0 at [1,0,0,0,1,0,0,0,1] orientation
+    shape = {{0,1,0},{0,0,1},{1,0,0},{-1,-1,-1}};
+  }
+};
+class Qshape : public piece{
+public:
+  //null constructor
+  Qshape(){
+    name = "Q";
+    size = 4;
+    //hard set block next locations kept in case of need of reset{dx, dy, dz}
+    Shape = {{0,1,0},{0,0,1},{-1,0,0},{1,-1-1}};
+    //starting from block 0 at [1,0,0,0,1,0,0,0,1] orientation
+    shape = {{0,1,0},{0,0,1},{-1,0,0},{1,-1,-1}};
+  }
+};
+class Cshape : public piece{
+public:
+  //null constructor
+  Cshape(){
+    name = "C";
+    size = 4;
+    //hard set block next locations kept in case of need of reset{dx, dy, dz}
+    Shape = {{0,1,0},{0,0,1},{1,0,-1},{-1,-1,0}};
+    //starting from block 0 at [1,0,0,0,1,0,0,0,1] orientation
+    shape = {{0,1,0},{0,0,1},{1,0,-1},{-1,-1,0}};
+  }
+};
+class Vshape : public piece{
+public:
+  //null constructor
+  Vshape(){
+    name = "V";
+    size = 3;
+    //hard set block next locations kept in case of need of reset{dx, dy, dz}
+    Shape = {{0,1,0},{0,0,1},{0,-1,-1}};
+    //starting from block 0 at [1,0,0,0,1,0,0,0,1] orientation
+    shape = {{0,1,0},{0,0,1},{0,-1,-1}};
+  }
+};
 std::vector<std::vector<std::vector<std::string>>> Solve(std::vector<std::vector<std::vector<std::string>>> filling, std::vector<piece> filler, std::vector<int> checked){
 
   //return Solve(filling, filler,checked);
@@ -165,7 +236,7 @@ void pout(std::vector<std::vector<std::vector<std::string>>> input){
 
 
 /*
-A solution (or the solution)
+A solution (or The solution)
 layer bottom
 LSS
 LPV
