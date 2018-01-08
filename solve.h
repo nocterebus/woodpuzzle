@@ -199,10 +199,14 @@ public:
   }
 };
 
-std::vector<std::vector<std::vector<std::string>>> Solve(std::vector<std::vector<std::vector<std::string>>> filling, std::vector<piece> filler, std::vector<int> checked){
+void Solve(std::vector<std::vector<std::vector<std::string>>>* filling, std::vector<piece>* filler, std::vector<int>* checked, int checking){
+  if (checked.at(0) == 7){
+    std::cout<<"all pieces checked no answer\n";
+    *checked = {0,0,0,0,0,0,0};
+    return;
+  }
 
-  //return Solve(filling, filler,checked);
-  return filling;
+  //return Solve(&filling, &filler, &checked);
 }
 
 void pout(std::vector<std::vector<std::vector<std::string>>> input){
@@ -250,6 +254,25 @@ layer top
 TQQ
 TQC
 TCC
+
+
+*/
+/*
+pointer notes for future reference
+
+void doubleValue (int* a) {
+  // Double the value at the pointer
+  *a = (*a )*2;
+  return ;
+}
+
+int main (int argc , char ** argv ) {
+  int number = 3;
+  doubleValue (& number );
+  // Number is now 6
+  std :: cout <<" Number is now " <<number <<'\n';
+  return 0;
+}
 
 
 */
