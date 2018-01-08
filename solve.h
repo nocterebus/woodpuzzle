@@ -198,13 +198,17 @@ public:
     shape = {{0,1,0},{0,0,1},{0,-1,-1}};
   }
 };
-
-void Solve(std::vector<std::vector<std::vector<std::string>>>* filling, std::vector<piece>* filler, std::vector<int>* checked, int checking){
-  if (checked.at(0) == 7){
+//main solving function
+//Solve(filling, filler, checked, checking)
+void Solve(std::vector<std::vector<std::vector<std::string>>>* filling, std::vector<piece>* filler, std::vector<int>* checked, std::vector<int> checking){
+  if (checked->at(0) == 7){
     std::cout<<"all pieces checked no answer\n";
-    *checked = {0,0,0,0,0,0,0};
+    for (int i = 0; i < checked->size(); ++i){
+      checked->at(i) = 0;
+    }
     return;
   }
+  for ()
 
   //return Solve(&filling, &filler, &checked);
 }

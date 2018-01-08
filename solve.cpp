@@ -21,7 +21,8 @@ Vshape V;
 std::vector<piece> filler = {L,T,S,P,Q,C,V};
 //initialize vector that keeps track of checked pieces
 std::vector<int> checked = {7,7,7,7,7,7,7};
-}
+//which place currently being checked (x,y,z)
+std::vector<int> checking = {0,0,0};
 //start at bottom to try filling pieces from
 int dz,dy,dx = 0;
 
@@ -35,7 +36,7 @@ int main (int argc, char** argv){
     dz += L.shape.at(block)[2];
     cube[dz][dy][dx] = L.name;
   }
-  Solve(&cube, &filler, &checked, 0)
+  Solve(&cube, &filler, &checked, checking);
   pout(cube);
 
   return 0;
