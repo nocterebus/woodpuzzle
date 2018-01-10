@@ -80,10 +80,9 @@ void piece::reorient(){
     y_rotations = 0;
     //rotate along z_axis
     for (int nblock = 0; nblock < size; ++nblock){
-      shape[nblock] = {((shape[nblock][0])*0+(shape[nblock][1])*-1+(shape[nblock][2])*0),//change in z position to next piece
-                        ((shape[nblock][0]*1)+(shape[nblock][1])*0+(shape[nblock][2])*0),//change in y position to next piece
-                        ((shape[nblock][0]*0)+(shape[nblock][1])*0+(shape[nblock][2])*1)};//change in x position to next piece
+      shape[nblock] = {(shape[nblock][1]*1),(shape[nblock][0]*-1),(shape[nblock][2]*1)};
     }
+
     //increase z_rotations count by 1
     ++z_rotations;
   }
@@ -93,9 +92,7 @@ void piece::reorient(){
     x_rotations = 0;
     //rotate along y_axis
     for (int nblock = 0; nblock < size; ++nblock){
-      shape[nblock] = {((shape[nblock][0])*0+(shape[nblock][1])*0+(shape[nblock][2])*1),//change in z position to next piece
-                        ((shape[nblock][0]*0)+(shape[nblock][1])*1+(shape[nblock][2])*0),//change in y position to next piece
-                        ((shape[nblock][0]*-1)+(shape[nblock][1])*0+(shape[nblock][2])*0)};//change in x position to next piece
+      shape[nblock] = {(shape[nblock][2]*-1),(shape[nblock][1]*1),(shape[nblock][0]*1)};
     }
     //increase y_rotations count by 1
     ++y_rotations;
@@ -104,9 +101,7 @@ void piece::reorient(){
   else {
     //rotate along x_axis
     for (int nblock = 0; nblock < size; ++nblock){
-      shape[nblock] = {((shape[nblock][0])*1+(shape[nblock][1])*0+(shape[nblock][2])*0),//change in z position to next piece
-                        ((shape[nblock][0]*0)+(shape[nblock][1])*0+(shape[nblock][2])*-1),//change in y position to next piece
-                        ((shape[nblock][0]*0)+(shape[nblock][1])*1+(shape[nblock][2])*0)};//change in x position to next piece
+      shape[nblock] = {(shape[nblock][0]*1),(shape[nblock][2]*1),(shape[nblock][1]*-1)};
     }
     //increase x_rotations count by 1
     ++x_rotations;
