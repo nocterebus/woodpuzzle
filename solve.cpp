@@ -9,6 +9,10 @@ By Justen Yeung
 std::vector<std::string> emptycolumn = {"0", "0", "0"};
 std::vector<std::vector<std::string>> emptylayer(3,emptycolumn);
 std::vector<std::vector<std::vector<std::string>>> cube(3, emptylayer);
+cube[0][0][0] = "X";
+cube[0][1][0] = "X";
+cube[0][1][1] = "X";
+cube[1][1][0] = "X";
 //initialize all shapes
 Lshape L;
 Tshape T;
@@ -20,7 +24,7 @@ Vshape V;
 //place pieces into vector
 std::vector<piece> filler = {L,T,S,P,Q,C,V};
 //initialize vector that keeps track of checked pieces
-std::vector<int> checked = {7,7,7,7,7,7,7};
+std::vector<int> checked = {31,31,31,31,31,31,31};
 //which place currently being checked (x,y,z)
 std::vector<int> checking = {0,0,0};
 //start at bottom to try filling pieces from
@@ -41,3 +45,20 @@ int main (int argc, char** argv){
 
   return 0;
 }
+/*
+A solution (or The solution)
+layer bottom
+LSS
+LPV
+LLV
+layer mid
+SSQ
+TPV
+PPC
+layer top
+TQQ
+TQC
+TCC
+
+
+*/

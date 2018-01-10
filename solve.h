@@ -208,7 +208,16 @@ void Solve(std::vector<std::vector<std::vector<std::string>>>* filling, std::vec
     }
     return;
   }
-  for ()
+  //z direction
+  for (int z = 0; z < filling->size(); ++z){
+    //y direction
+    for (int y = 0; y < filling->size(); ++y){
+      //z direction
+      for (int x = 0; x < filling->size(); ++x){
+
+      }
+    }
+  }
 
   //return Solve(&filling, &filler, &checked);
 }
