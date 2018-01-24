@@ -9,10 +9,7 @@ By Justen Yeung
 std::vector<std::string> emptycolumn = {"0", "0", "0"};
 std::vector<std::vector<std::string>> emptylayer(3,emptycolumn);
 std::vector<std::vector<std::vector<std::string>>> cube(3, emptylayer);
-cube[0][0][0] = "X";
-cube[0][1][0] = "X";
-cube[0][1][1] = "X";
-cube[1][1][0] = "X";
+
 //initialize all shapes
 Lshape L;
 Tshape T;
@@ -32,7 +29,10 @@ int dz,dy,dx = 0;
 
 
 int main (int argc, char** argv){
-
+cube[0][0][0] = "X";
+cube[0][1][0] = "X";
+cube[0][1][1] = "X";
+cube[1][1][0] = "X";  
   pout(cube);
   for (int block = 0; block < L.size; ++block){
     dx += L.shape.at(block).at(0);
